@@ -2,9 +2,11 @@ brew install golangci-lint
 
 go mod init example/hello
 go run hello.go
-go test
+go test -v
 go build
 go doc fmt
+go test -bench=.
+go test -bench=. -benchmem
 
 
 ##Writing a test is just like writing a function, with a few rules
