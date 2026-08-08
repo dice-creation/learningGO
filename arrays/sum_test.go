@@ -1,7 +1,10 @@
 package arrays
 
-import "testing"
-import "slices"
+import (
+	"testing"
+	"slices"
+	"reflect"
+)
 
 func TestSum(t *testing.T){
 	t.Run("collection of 5 numbers", func (t *testing.T){
@@ -32,8 +35,41 @@ func TestSum(t *testing.T){
 			t.Errorf("got %v want %v", got, want)
 		}
 	})
+
+	t.Run("Sum all with any size", func (t *testing.T) {
+		a := []int{1,2}
+		b := []int{0,9}
+		got := SumAll(a, b)
+		want := []int{3,9}
+
+		if !slices.Equal(got,want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
 }
 
+func TestSumAllTails(t *testing.T){
+
+	checkSums := func(t testing.TB, got, want []int){
+		t.Helper()
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	}
+	t.Run("Sum all tails", func (t *testing.T){
+		got := SumAllTails([]int{1,2}, []int{0,9})
+		want := []int{2,9}
+
+		checkSums(t, got, want)
+	})
+
+	t.Run("safely sum empty slices", func (t *testing.T){
+		got := SumAllTails([]int{}, []int{3,4,5})
+		want := []int{0,9}
+
+		checkSums(t, got, want)
+	})
+}
 
 func assertSum(t testing.TB, got, want int, numbers []int){
 	if got != want {

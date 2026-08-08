@@ -20,11 +20,32 @@ func Sum(numbers []int) int {
 }
 
 func SumAll(numbersToSum ...[]int) []int{
-	lengthOfNumbers := len(numbersToSum)
-	sum := make([]int, lengthOfNumbers)
+	// lengthOfNumbers := len(numbersToSum)
+	// sum := make([]int, lengthOfNumbers)
 
-	for i, numbers := range numbersToSum {
-		sum[i] = Sum(numbers)
+	// for i, numbers := range numbersToSum {
+	// 	sum[i] = Sum(numbers)
+	// }
+	// return sum
+
+	var sums [] int
+	for _, number := range numbersToSum {
+		sums = append(sums, Sum(number))
 	}
-	return sum
+
+	return sums
+}
+
+func SumAllTails(numbersToSum ...[]int) [] int{
+	var sums []int
+	for _, number := range numbersToSum {
+		if len(number) == 0 {
+			sums = append(sums, 0)
+		}else{
+			tail := number[1:]
+			sums = append(sums, Sum(tail))
+		}
+	}
+
+	return sums
 }
