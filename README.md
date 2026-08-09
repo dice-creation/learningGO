@@ -8,7 +8,7 @@ go doc fmt
 go test -bench=.
 go test -bench=. -benchmem
 go test -cover
-
+errcheck .
 
 ##Writing a test is just like writing a function, with a few rules
 
