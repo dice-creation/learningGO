@@ -5,10 +5,6 @@ import "errors"
 
 type Bitcoin int
 
-type Stringer interface {
-	String() string
-}
-
 type Wallet struct {
 	balance Bitcoin
 }
