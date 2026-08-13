@@ -3,15 +3,15 @@ package mocking
 import (
 	"fmt"
 	"io"
-	"os"
+	// "os"
 	"time"
 )
 
-func main() {
-	// Countdown(os.Stdout)
-	sleeper := &DefaultSleeper{}
-	Countdown(os.Stdout, sleeper)
-}
+// func main() {
+// 	// Countdown(os.Stdout)
+// 	sleeper := &DefaultSleeper{}
+// 	Countdown(os.Stdout, sleeper)
+// }
 
 const finalWord = "Go!"
 const countdownStart = 3
@@ -28,13 +28,13 @@ type Sleeper interface {
 	Sleep()
 }
 
-type SpySleeper struct {
-	Calls int
-}
+// type SpySleeper struct {
+// 	Calls int
+// }
 
-func (s *SpySleeper) Sleep() {
-	s.Calls++
-}
+// func (s *SpySleeper) Sleep() {
+// 	s.Calls++
+// }
 
 type DefaultSleeper struct{}
 
