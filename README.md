@@ -9,6 +9,7 @@ go test -bench=.
 go test -bench=. -benchmem
 go test -cover
 errcheck .
+go test -race // check race condition
 
 ##Writing a test is just like writing a function, with a few rules
 
